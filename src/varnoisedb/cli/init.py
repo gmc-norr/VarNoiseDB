@@ -17,8 +17,8 @@ def init(ctx):
         password=db_config.get('password')
     )
     
-    db_adapter._create_table()
-    db_adapter._create_indices()
+    db_adapter.create_tables()
+    db_adapter.create_indices()
     
     db_adapter.close()
     click.echo("Database initialized successfully.")

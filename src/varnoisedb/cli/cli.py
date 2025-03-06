@@ -3,12 +3,13 @@ import click
 import logging
 import yaml
 import importlib.resources as pkg_resources
+
 from varnoisedb.schema import validate_config
 from varnoisedb.__version__ import __version__
-
 from varnoisedb.cli.load import load
 from varnoisedb.cli.export import export
 from varnoisedb.cli.init import init
+from varnoisedb.cli.remove import remove
 
 logging.basicConfig(level=logging.INFO)
 
@@ -47,6 +48,4 @@ def cli(ctx, config):
 cli.add_command(load)
 cli.add_command(export)
 cli.add_command(init)
-
-if __name__ == "__main__":
-    cli(obj={})
+cli.add_command(remove)

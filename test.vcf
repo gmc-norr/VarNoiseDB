@@ -1,0 +1,11 @@
+##fileformat=VCFv4.2
+##INFO=<ID=MEAN_AF,Number=1,Type=Float,Description="Mean non-reference allele frequency">
+##INFO=<ID=MAX_AF,Number=1,Type=Float,Description="Maximum non-reference allele frequency">
+##INFO=<ID=MIN_AF,Number=1,Type=Float,Description="Minimum non-reference allele frequency">
+##INFO=<ID=DEPTH,Number=1,Type=Float,Description="Total sequencing depth">
+##INFO=<ID=SAMPLES,Number=1,Type=Integer,Description="Number of samples">
+##INFO=<ID=SAMPLE_NAMES,Number=.,Type=String,Description="Names of samples">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+chr1	10000	.	N	<NON_REF>	.	PASS	MEAN_AF=0.500000;MAX_AF=0.500000;MIN_AF=0.500000;DEPTH=80.0;SAMPLES=8;SAMPLE_NAMES=["SAMPLE"]
+chr1	10001	.	N	<NON_REF>	.	PASS	MEAN_AF=0.500000;MAX_AF=0.500000;MIN_AF=0.500000;DEPTH=160.0;SAMPLES=8;SAMPLE_NAMES=["SAMPLE"]
+chr1	10002	.	N	<NON_REF>	.	PASS	MEAN_AF=0.500000;MAX_AF=0.500000;MIN_AF=0.500000;DEPTH=240.0;SAMPLES=8;SAMPLE_NAMES=["SAMPLE"]

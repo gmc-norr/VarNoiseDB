@@ -3,9 +3,9 @@ This module handles database connections and operations for VarNoiseDB.
 It should support SQLite, PostgreSQL, and MySQL.
 """
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Index
 from sqlalchemy.orm import sessionmaker
-from varnoisedb.models import Base, Variant
+from varnoisedb.models import Base, Variant, Sample
 
 class DatabaseAdapter:
     def __init__(self, db_type='sqlite', db_name='variants.db', host=None, port=None, user=None, password=None):
@@ -17,7 +17,6 @@ class DatabaseAdapter:
         self.password = password
         self.engine = self._create_engine()
         self.Session = sessionmaker(bind=self.engine)
-        self._create_tables()
     
     def _create_engine(self):
         if self.db_type == 'sqlite':
@@ -29,8 +28,12 @@ class DatabaseAdapter:
         else:
             raise ValueError(f"Unsupported database type: {self.db_type}")
     
-    def _create_tables(self):
+    def create_tables(self):
         Base.metadata.create_all(self.engine)
+    
+    def create_indices(self):
+        with self.engine.connect() as connection:
+            Index('idx_variants_chr_pos', Variant.chr, Variant.pos).create(connection)
     
     def get_session(self):
         return self.Session()
